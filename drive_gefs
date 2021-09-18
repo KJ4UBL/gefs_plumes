@@ -1,17 +1,17 @@
-#!/bin/ksh -l
+#!/bin/bash
 
 set +x
-source /u/Alicia.Bentley/.bashrc
+source ~/.bashrc
 set -x
 
 cyc=$1
 
-mkdir -p /gpfs/dell1/ptmp/Alicia.Bentley
-mkdir -p /gpfs/dell1/ptmp/Alicia.Bentley/log
-mkdir -p /gpfs/dell1/stmp/Alicia.Bentley
-mkdir -p /gpfs/dell1/stmp/Alicia.Bentley/gefs
-cd /gpfs/dell1/stmp/Alicia.Bentley/gefs
-cp /gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/*gfsxsta*txt .
+mkdir -p ~/gefs/gpfs/dell1/ptmp/Alicia.Bentley
+mkdir -p ~/gefs/gpfs/dell1/ptmp/Alicia.Bentley/log
+mkdir -p ~/gefs/gpfs/dell1/stmp/Alicia.Bentley
+mkdir -p ~/gefs/gpfs/dell1/stmp/Alicia.Bentley/gefs
+cd ~/gefs/gpfs/dell1/stmp/Alicia.Bentley/gefs
+cp ~/gefs/code/*gfsxsta*txt .
 
 sleep 3
 /bin/date +%Y%m%d${cyc}%a > holddate.txt
@@ -19,15 +19,28 @@ sleep 3
 /bin/date --date="yesterday" +%Y%m%d${cyc}%a > yholddate.txt
 
 sleep 3
-bsub < /gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/run_gefs6
+#bsub < ~/gefs/gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/run_gefs6
+#bsub < ~/gefs/code/run_gefs6
+~/gefs/code/run_gefs6
 sleep 3
-bsub < /gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/run_gefs5
+#bsub < ~/gefs/gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/run_gefs5
+#bsub < ~/gefs/code/run_gefs5
+~/gefs/code/run_gefs5
 sleep 3
-bsub < /gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/run_gefs4
+#bsub < ~/gefs/gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/run_gefs4
+#bsub < ~/gefs/code/run_gefs4
+~/gefs/code/run_gefs4
 sleep 3
-bsub < /gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/run_gefs3
+#bsub < ~/gefs/gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/run_gefs3
+#bsub < ~/gefs/code/run_gefs3
+~/gefs/code/run_gefs3
 sleep 3
-bsub < /gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/run_gefs2
+#bsub < ~/gefs/gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/run_gefs2
+#bsub < ~/gefs/code/run_gefs2
+~/gefs/code/run_gefs2
 sleep 3
-bsub < /gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/run_gefs
+#bsub < ~/gefs/gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/run_gefs
+#bsub < ~/gefs/code/run_gefs
+~/gefs/code/run_gefs
+
 exit
