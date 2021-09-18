@@ -1,11 +1,11 @@
-#!/bin/ksh --login
+#!/bin/bash
 echo 'into'
-source /u/Alicia.Bentley/.bashrc
+source ~/.bashrc
 cyc=$1
 
-mkdir -p /gpfs/dell1/stmp/Alicia.Bentley
-mkdir -p /gpfs/dell1/stmp/Alicia.Bentley/gefs
-cd /gpfs/dell1/stmp/Alicia.Bentley/gefs
+mkdir -p ~/gefs/gpfs/dell1/stmp/Alicia.Bentley
+mkdir -p ~/gefs/gpfs/dell1/stmp/Alicia.Bentley/gefs
+cd ~/gefs/gpfs/dell1/stmp/Alicia.Bentley/gefs
 
 
 year=`cut -c 1-4 holddate.txt`
@@ -17,8 +17,8 @@ ymdh=${year}${month}${day}${hour}
 ymdhdow=${year}${month}${day}${hour}${dow}
 
 
-python /gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/makegefs2mrhcsv.py $ymdh &
-python /gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/makegefsshearcsv.py $ymdh &
+python ~/gefs/code/makegefs2mrhcsv.py $ymdh &
+python ~/gefs/code/makegefsshearcsv.py $ymdh &
 wait
 
 exit

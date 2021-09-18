@@ -1,13 +1,13 @@
-#!/bin/ksh --login
+#!/bin/bash
 echo 'into'
-source /u/Alicia.Bentley/.bashrc
+source ~/.bashrc
 cyc=$1
 
-mkdir -p /gpfs/dell1/stmp/Alicia.Bentley
-mkdir -p /gpfs/dell1/stmp/Alicia.Bentley/gefs
-cd /gpfs/dell1/stmp/Alicia.Bentley/gefs
-cp /gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/matplotlibrc .
-cp /gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/EMCGEFSplumes.html .
+mkdir -p ~/gefs/gpfs/dell1/stmp/Alicia.Bentley
+mkdir -p ~/gefs/gpfs/dell1/stmp/Alicia.Bentley/gefs
+cd ~/gefs/gpfs/dell1/stmp/Alicia.Bentley/gefs
+cp ~/gefs/code/matplotlibrc .
+cp ~/gefs/code/EMCGEFSplumes.html .
 
 year=`cut -c 1-4 holddate.txt`
 month=`cut -c 5-6 holddate.txt`
@@ -18,8 +18,8 @@ ymdh=${year}${month}${day}${hour}
 ymdhdow=${year}${month}${day}${hour}${dow}
 
 
-python /gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/makegefs850windcsv.py $ymdh &
-python /gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/makegefsthickcsv.py $ymdh &
+python ~/gefs/code/makegefs850windcsv.py $ymdh &
+python ~/gefs/code/makegefsthickcsv.py $ymdh &
 wait
 
 exit
