@@ -75,7 +75,8 @@ for i in range(len(members)):
         znew=np.round(f((360+slons[k]),slats[k]),3)
         nmbtotal[k,j,i]=znew
     else:
-      grbs = pygrib.open('/gpfs/dell1/nco/ops/com/gfs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j]).zfill(3))
+      # grbs = pygrib.open('/gpfs/dell1/nco/ops/com/gfs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j]).zfill(3))
+      grbs = pygrib.open('/home/meteo/cxt5337/gefs/model_data/gfs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j]).zfill(3))
       if j==0:
         precip=grbs[462].values-273.15
         precip=np.asarray(precip[::-1,:])

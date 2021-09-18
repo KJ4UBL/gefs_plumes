@@ -89,7 +89,8 @@ for i in range(len(members)):
 
     #get GFS data
     else:
-      grbs = pygrib.open('/gpfs/dell1/nco/ops/com/gfs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f' +str(fhours1[j]).zfill(3))
+      # grbs = pygrib.open('/gpfs/dell1/nco/ops/com/gfs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f' +str(fhours1[j]).zfill(3))
+      grbs = pygrib.open('/home/meteo/cxt5337/gefs/model_data/gfs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f' +str(fhours1[j]).zfill(3))
       for grb in grbs:
         print(grb)
       if j==0:

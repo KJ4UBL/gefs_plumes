@@ -63,7 +63,8 @@ for i in range(len(members)):
         precip=grbs[69].values*.03937
         precip=np.asarray(precip[::-1,:])
       elif (j%2)==0:
-        grbsprev = pygrib.open('/gpfs/dell4/nco/ops/com/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j-1]).zfill(3))
+        # grbsprev = pygrib.open('/gpfs/dell4/nco/ops/com/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j-1]).zfill(3))
+        grbsprev = pygrib.open('/home/meteo/cxt5337/gefs/model_data/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j-1]).zfill(3))
         #for grb in grbsprev:
         print(grbs[69])
         precipnewc=grbs[69].values*.03937
@@ -93,7 +94,8 @@ for i in range(len(members)):
           else:
             nmbtotal[k,j,i]=znew
     else:
-      grbs = pygrib.open('/gpfs/dell1/nco/ops/com/gfs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j]).zfill(3))
+      # grbs = pygrib.open('/gpfs/dell1/nco/ops/com/gfs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j]).zfill(3))
+      grbs = pygrib.open('/home/meteo/cxt5337/gefs/model_data/gfs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j]).zfill(3))
       if j==0:
         nmbtotal[:,j,34]=0.0
         continue
@@ -102,7 +104,8 @@ for i in range(len(members)):
         precip=grbs[596].values*.03937
         precip=np.asarray(precip[::-1,:])
       elif (j%2)==0:
-        grbsprev = pygrib.open('/gpfs/dell1/nco/ops/com/gfs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j-1]).zfill(3))
+        # grbsprev = pygrib.open('/gpfs/dell1/nco/ops/com/gfs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j-1]).zfill(3))
+        grbsprev = pygrib.open('/home/meteo/cxt5337/gefs/model_data/gfs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j-1]).zfill(3
         precipnewc=grbs[596].values*.03937
         precipnewc=np.asarray(precipnewc[::-1,:])
         precipnewp=grbsprev[596].values*.03937

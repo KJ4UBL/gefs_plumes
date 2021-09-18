@@ -56,7 +56,7 @@ for i in range(len(members)):
     elif i>1 and members[i]!='GFS':
       # grbs = pygrib.open('/gpfs/dell4/nco/ops/com/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j]).zfill(3))
       grbs = pygrib.open('/home/meteo/cxt5337/gefs/model_data/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j]).zfill(3))
-      print('/gpfs/dell4/nco/ops/com/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j]).zfill(3))
+      print('/home/meteo/cxt5337/gefs/model_data/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j]).zfill(3))
       #for grb in grbs:
 
       #grib message order changes from f00 to f03 to f06
@@ -89,7 +89,8 @@ for i in range(len(members)):
 
     #get GFS data
     else:
-      grbs = pygrib.open('/gpfs/dell1/nco/ops/com/gfs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j]).zfill(3))
+      # grbs = pygrib.open('/gpfs/dell1/nco/ops/com/gfs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j]).zfill(3))
+      grbs = pygrib.open('/home/meteo/cxt5337/gefs/model_data/gfs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j]).zfill(3))
       #for grb in grbs:
       if j==0:
         uwind=grbs[585].values*1.94

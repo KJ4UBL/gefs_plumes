@@ -53,7 +53,8 @@ for i in range(len(members)):
     elif i==1:
       nmbtotal[:,j,i]=date_list[j].strftime("%m-%d-%Y:%H")
     elif i>1 and members[i]!='GFS':
-      grbind = pygrib.index('/gpfs/dell4/nco/ops/com/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2bp5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2b.0p50.f'+str(fhours1[j]).zfill(3),'name','level')
+      # grbind = pygrib.index('/gpfs/dell4/nco/ops/com/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2bp5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2b.0p50.f'+str(fhours1[j]).zfill(3),'name','level')
+      grbind = pygrib.index('/home/meteo/cxt5337/gefs/model_data/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2bp5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2b.0p50.f'+str(fhours1[j]).zfill(3),'name','level')
       #for grb in grbs:
       if j==0:
         precip=grbind.select(name='Convective available potential energy',level=0)[0].values
@@ -74,7 +75,8 @@ for i in range(len(members)):
         znew=np.round(f((360+slons[k]),slats[k]),3)
         nmbtotal[k,j,i]=znew
     else:
-      grbs = pygrib.open('/gpfs/dell1/nco/ops/com/gfs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j]).zfill(3))
+      # grbs = pygrib.open('/gpfs/dell1/nco/ops/com/gfs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j]).zfill(3))
+      grbs = pygrib.open('/home/meteo/cxt5337/gefs/model_data/gfs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j]).zfill(3))
       #for grb in grbs:
       if j==0:
         precip=grbs[602].values

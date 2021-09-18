@@ -55,7 +55,8 @@ for i in range(len(members)):
     elif i>1 and members[i]!='GFS':
       # grbs = pygrib.open('/gpfs/dell4/nco/ops/com/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2bp5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2b.0p50.f'+str(fhours1[j]).zfill(3))
       grbs = pygrib.open('/home/meteo/cxt5337/gefs/model_data/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j]).zfill(3))
-      grbind = pygrib.index('/gpfs/dell4/nco/ops/com/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2bp5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2b.0p50.f'+str(fhours1[j]).zfill(3),'name')
+      # grbind = pygrib.index('/gpfs/dell4/nco/ops/com/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2bp5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2b.0p50.f'+str(fhours1[j]).zfill(3),'name')
+      grbind = pygrib.index('/home/meteo/cxt5337/gefs/model_data/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2bp5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2b.0p50.f'+str(fhours1[j]).zfill(3),'name')
      
       #for grb in grbs:
       precip=(grbind.select(name='MSLP (Eta model reduction)')[0].values/100.)
@@ -70,7 +71,8 @@ for i in range(len(members)):
         znew=np.round(f((360+slons[k]),slats[k]),3)
         nmbtotal[k,j,i]=znew
     else:
-      grbind = pygrib.index('/gpfs/dell1/nco/ops/com/gfs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j]).zfill(3),'name')
+      # grbind = pygrib.index('/gpfs/dell1/nco/ops/com/gfs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j]).zfill(3),'name')
+      grbind = pygrib.index('/home/meteo/cxt5337/gefs/model_data/gfs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j]).zfill(3),'name')
       #for grb in grbs:
       precip=(grbind.select(name='MSLP (Eta model reduction)')[0].values/100.)
       precip=np.asarray(precip[::-1,:])
