@@ -13,7 +13,8 @@ import matplotlib.pyplot as plt
 from scipy import interpolate
 import sys
 
-ymdh = str(sys.argv[1])
+# ymdh = str(sys.argv[1])
+ymdh='2021091800'     # Temporary manual date setting
 
 def find_nearest(array,value):
   idx=(np.abs(array-value)).argmin()
@@ -31,7 +32,8 @@ members=['time','date','c00','p01','p02','p03','p04','p05','p06','p07','p08','p0
 type=['rain','snow','freezing rain','ice pellets']
 membertype=['time','date','rain','snow','freezing rain','ice pellets']
 closest=0  #starting range of forecast hour
-furthest=195 #3 hours more than the actual ending forecast hour you want
+# furthest=195 #3 hours more than the actual ending forecast hour you want
+furthest=63
 ymd=ymdh[0:8]
 year=int(ymdh[0:4])
 month=int(ymdh[4:6])

@@ -12,7 +12,9 @@ import matplotlib.pyplot as plt
 from scipy import interpolate
 import sys
 
-ymdh = str(sys.argv[1])
+#ymdh = str(sys.argv[1])
+ymdh='2021091800'     # Temporary manual date setting
+
 slist=[]
 slats=[]
 slons=[]
@@ -28,7 +30,8 @@ preciptotal=[]
 amount=1.0
 fhour=60
 closest=0  #starting range of forecast hour
-furthest=195 #3 hours more than the actual ending forecast hour you want
+# furthest=195 #3 hours more than the actual ending forecast hour you want
+furthest=63
 ymd=ymdh[0:8]
 year=int(ymdh[0:4])
 month=int(ymdh[4:6])
@@ -50,7 +53,8 @@ for i in range(len(members)):
     elif i==1:
       nmbtotal[:,j,i]=date_list[j].strftime("%m-%d-%Y:%H")
     elif i>1 and members[i]!='GFS':
-      grbs = pygrib.open('/gpfs/dell4/nco/ops/com/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j]).zfill(3))
+      #grbs = pygrib.open('/gpfs/dell4/nco/ops/com/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j]).zfill(3))
+      grbs = pygrib.open('/home/meteo/cxt5337/gefs/model_data/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j]).zfill(3))
       #for grb in grbs:
       if j==0:
         z700=grbs[36].values/10.0

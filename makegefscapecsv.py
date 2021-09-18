@@ -12,7 +12,9 @@ import matplotlib.pyplot as plt
 from scipy import interpolate
 import sys
 
-ymdh = str(sys.argv[1])
+# ymdh = str(sys.argv[1])
+ymdh='2021091800'     # Temporary manual date setting
+
 slist=[]
 slats=[]
 slons=[]
@@ -28,7 +30,8 @@ preciptotal=[]
 amount=1.0
 fhour=60
 closest=0  #starting range of forecast hour
-furthest=195 #3 hours more than the actual ending forecast hour you want
+# furthest=195 #3 hours more than the actual ending forecast hour you want
+furthest=63
 ymd=ymdh[0:8]
 year=int(ymdh[0:4])
 month=int(ymdh[4:6])
