@@ -1,4 +1,4 @@
-#!/bin/ksh --login
+#!/bin/bash
 #
 #BSUB -oo /gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/gefs5.out
 #BSUB -eo /gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/gefs5.out
@@ -13,12 +13,12 @@
 #
 
 set +x
-source /u/Alicia.Bentley/.bashrc
+source ~/.bashrc
 set -x
 
-cd /gpfs/dell1/stmp/Alicia.Bentley/gefs
-export HOLDIN=/gpfs/dell1/stmp/Alicia.Bentley
-export GBexec=/gpfs/dell1/nco/ops/nwprod/util/exec
+cd ~/gefs/gpfs/dell1/stmp/Alicia.Bentley/gefs
+export HOLDIN=~/gefs/gpfs/dell1/stmp/Alicia.Bentley
+export GBexec=~/gefs/gpfs/dell1/nco/ops/nwprod/util/exec
 
 echo intoscript
 year=`cut -c 1-4 holddate.txt`
@@ -34,7 +34,7 @@ set -x
 
 'rm' poescript5
 
-echo "/gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/launchgefs5 ${cyc}" >> poescript5
+echo "~/gefs/code/launchgefs5 ${cyc}" >> poescript5
 
 
 chmod 775 poescript5
@@ -44,7 +44,8 @@ export MP_CMDFILE=poescript5
 # Execute the script.
 
 echo beforelsf
-mpirun -l cfp poescript5
+#mpirun -l cfp poescript5
+./poescript5
 echo pastlsf
 
 exit

@@ -1,4 +1,4 @@
-#!/bin/ksh --login
+#!/bin/bash
 #
 #BSUB -oo /gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/gefs2.out
 #BSUB -eo /gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/gefs2.out
@@ -13,12 +13,12 @@
 #
 
 set +x
-source /u/Alicia.Bentley/.bashrc
+source ~/.bashrc
 set -x
 
-cd /gpfs/dell1/stmp/Alicia.Bentley/gefs
-export HOLDIN=/gpfs/dell1/stmp/Alicia.Bentley
-export GBexec=/gpfs/dell1/nco/ops/nwprod/util/exec
+cd ~/gefs/gpfs/dell1/stmp/Alicia.Bentley/gefs
+export HOLDIN=~/gefs/gpfs/dell1/stmp/Alicia.Bentley
+export GBexec=~/gefs/gpfs/dell1/nco/ops/nwprod/util/exec
 
 echo intoscript
 year=`cut -c 1-4 holddate.txt`
@@ -34,7 +34,7 @@ set -x
 
 'rm' poescript2
 
-echo "/gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/launchgefs2 ${cyc}" >> poescript2
+echo "~/gefs/code/launchgefs2 ${cyc}" >> poescript2
 
 
 chmod 775 poescript2
@@ -44,7 +44,8 @@ export MP_CMDFILE=poescript2
 # Execute the script.
 
 echo beforelsf
-mpirun -l cfp poescript2
+#mpirun -l cfp poescript2
+./poescript2
 echo pastlsf
 
 exit
