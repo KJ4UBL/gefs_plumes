@@ -8,8 +8,8 @@ echo 'into'
 #module load gempak/7.3.3
 
 
-mkdir -p ~/gpfs/dell1/stmp/Alicia.Bentley/obsgefs
-cd ~/gpfs/dell1/stmp/Alicia.Bentley/obsgefs
+mkdir -p ~/gefs/gpfs/dell1/stmp/Alicia.Bentley/obsgefs
+cd ~/gefs/gpfs/dell1/stmp/Alicia.Bentley/obsgefs
 rm -rf *txt
 
 /bin/date --date="yesterday" +%Y%m%d00 > yholddate.txt
