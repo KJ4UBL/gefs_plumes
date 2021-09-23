@@ -32,11 +32,11 @@ pwd
 #scp *thick*csv abentley@emcrzdm:/home/www/emc/htdocs/users/meg/plumes
 #scp *slp*csv abentley@emcrzdm:/home/www/emc/htdocs/users/meg/plumes
 #scp *rh*csv abentley@emcrzdm:/home/www/emc/htdocs/users/meg/plumes
-cp *2m*csv ~/gefs/gefs-plumes.webhop.me/
-cp *qpf*csv ~/gefs/gefs-plumes.webhop.me/
-cp *shear*csv ~/gefs/gefs-plumes.webhop.me/
-cp *thick*csv ~/gefs/gefs-plumes.webhop.me/
-cp *slp*csv ~/gefs/gefs-plumes.webhop.me/
-cp *rh*csv ~/gefs/gefs-plumes.webhop.me/
+cp *2m*csv /var/www/gefs-plumes.webhop.me
+cp *qpf*csv /var/www/gefs-plumes.webhop.me
+cp *shear*csv /var/www/gefs-plumes.webhop.me
+cp *thick*csv /var/www/gefs-plumes.webhop.me
+cp *slp*csv /var/www/gefs-plumes.webhop.me
+cp *rh*csv /var/www/gefs-plumes.webhop.me
 
 exit

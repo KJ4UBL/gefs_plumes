@@ -28,7 +28,8 @@ wait
 #cp ~/gefs/code/edit_gefs.ksh .
 #./edit_gefs.ksh
 
-cp ~/gefs/code/edit_gefs.bash .
+# Add -p flag to preserve permissions
+cp -p ~/gefs/code/edit_gefs.bash .
 ./edit_gefs.bash
 
 exit

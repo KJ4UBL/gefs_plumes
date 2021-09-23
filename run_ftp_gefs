@@ -34,15 +34,15 @@ pwd
 #scp *typ*csv abentley@emcrzdm:/home/www/emc/htdocs/users/meg/plumes
 #scp *snow*csv abentley@emcrzdm:/home/www/emc/htdocs/users/meg/plumes
 cp *pw*csv ~/gefs/gefs-plumes.webhop.me/
-cp *850*csv ~/gefs/gefs-plumes.webhop.me/
-cp *cape*csv ~/gefs/gefs-plumes.webhop.me/
-cp *10m*csv ~/gefs/gefs-plumes.webhop.me/
-cp *typ*csv ~/gefs/gefs-plumes.webhop.me/
-cp *snow*csv ~/gefs/gefs-plumes.webhop.me/
+cp *850*csv /var/www/gefs-plumes.webhop.me
+cp *cape*csv /var/www/gefs-plumes.webhop.me
+cp *10m*csv /var/www/gefs-plumes.webhop.me
+cp *typ*csv /var/www/gefs-plumes.webhop.me
+cp *snow*csv /var/www/gefs-plumes.webhop.me
 
 if [[ $number -gt 3700 ]];then
   #scp EMC*html abentley@emcrzdm:/home/www/emc/htdocs/users/meg/plumes/index.html
-  cp EMC*html ~/gefs/gefs-plumes.webhop.me/
+  cp EMC*html /var/www/gefs-plumes.webhop.me
 fi
 
 exit
