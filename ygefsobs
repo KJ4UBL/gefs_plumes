@@ -1,14 +1,14 @@
 #!/bin/sh -l
 echo 'into'
 #Script to create text files of surface obs at various stations
-module load gnu/4.8.5
-module load ips/18.0.1.163
-module load ips/18.0.5.274
-module load metplus/2.1
-module load gempak/7.3.3
+#module load gnu/4.8.5
+#module load ips/18.0.1.163
+#module load ips/18.0.5.274
+#module load metplus/2.1
+#module load gempak/7.3.3
 
-mkdir -p /gpfs/dell1/stmp/Alicia.Bentley/obsgefs
-cd /gpfs/dell1/stmp/Alicia.Bentley/obsgefs
+mkdir -p ~/gpfs/dell1/stmp/Alicia.Bentley/obsgefs
+cd ~/gpfs/dell1/stmp/Alicia.Bentley/obsgefs
 rm -rf *txt
 
 /bin/date --date="2 days ago" +%Y%m%d00 > yholddate.txt
@@ -57,15 +57,15 @@ if [[ $porp -eq "venus" ]]
 then
 for s in $stations; do
 for h in $hours; do
-/gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/advtime $ymdh 0 -1 1 0 > currentday.txt
+~/gefs/code/advtime $ymdh 0 -1 1 0 > currentday.txt
 ymdcurrent=`cut -c 1-8 currentday.txt`
-fmdl1=/gpfs/dell1/nco/ops/dcom/prod/ldmdata/gempak/hrly/${ymd}.hrly
+fmdl1=~/gpfs/dell1/nco/ops/dcom/prod/ldmdata/gempak/hrly/${ymd}.hrly
 ((k=k+1))
 
     sflist << EOF
 SFFILE = $fmdl1
 AREA   = @${s}
-DATTIM = `/gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/advtime $ymdh 0 -1 0`-`/gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/advtime $ymdh $h -1 0`
+DATTIM = `~/gefs/code/advtime $ymdh 0 -1 0`-`~/gefs/code/advtime $ymdh $h -1 0`
 SFPARM = tmpc;dwpc;sknt;drct;tclo;pmsl;P01I
 OUTPUT = f/pancobs${h}.txt
 IDNTYP = STID
@@ -85,6 +85,7 @@ sed '/^\s*$/d' pancobs.txt | sed '/STN/d' | sed '/PARM/d' | sed '/P01I/d'  > rtm
 mv pancobs.txt ${s}_${ymd}obs.txt
 rm -rf *pancobs*txt
 done
-scp *${ymd}*.txt abentley@emcrzdm:/home/www/emc/htdocs/users/meg/plumes/
+#scp *${ymd}*.txt abentley@emcrzdm:/home/www/emc/htdocs/users/meg/plumes/
+cp *${ymd}*.txt ~/gefs/gefs-plumes.webhop.me
 fi
 exit

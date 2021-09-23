@@ -12,9 +12,8 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from scipy import interpolate
 import sys
-
-# ymdh = str(sys.argv[1])
-ymdh='2021091800'     # Temporary manual date setting
+ymdh = str(sys.argv[1])
+# ymdh='2021091800'     # Temporary manual date setting
 
 def find_nearest(array,value):
   idx=(np.abs(array-value)).argmin()
@@ -66,15 +65,18 @@ for i in range(len(members)):
         snowtotal=np.zeros((361,720))
         continue
       elif (j%2)!=0:
-        grbind = pygrib.index('/gpfs/dell4/nco/ops/com/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j]).zfill(3),'name')
+        # grbind = pygrib.index('/gpfs/dell4/nco/ops/com/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j]).zfill(3),'name')
+        grbind = pygrib.index('/home/gefs/gefs/model_data/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j]).zfill(3),'name')
         precip=grbind.select(name='Total Precipitation')[0].values*.03937
         catsnow=grbind.select(name='Categorical snow')[0].values
         precip=np.asarray(precip[::-1,:])
         print(precip.shape)
         catsnow=np.asarray(catsnow[::-1,:])
       else:
-        grbindprev = pygrib.index('/gpfs/dell4/nco/ops/com/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j-1]).zfill(3),'name')
-        grbind = pygrib.index('/gpfs/dell4/nco/ops/com/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j]).zfill(3),'name')
+        # grbindprev = pygrib.index('/gpfs/dell4/nco/ops/com/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j-1]).zfill(3),'name')
+        grbindprev = pygrib.index('/home/gefs/gefs/model_data/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j-1]).zfill(3),'name')
+        # grbind = pygrib.index('/gpfs/dell4/nco/ops/com/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j]).zfill(3),'name')
+        grbind = pygrib.index('/home/gefs/gefs/model_data/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j]).zfill(3),'name')
         precipnewc=grbind.select(name='Total Precipitation')[0].values*.03937
         precipnewp=grbindprev.select(name='Total Precipitation')[0].values*.03937
         catsnow=grbind.select(name='Categorical snow')[0].values
@@ -113,15 +115,18 @@ for i in range(len(members)):
         snowtotal=np.zeros((361,720))
         continue
       elif (j%2)!=0:
-        grbind = pygrib.index('/gpfs/dell1/nco/ops/com/gfs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j]).zfill(3),'name')
+        # grbind = pygrib.index('/gpfs/dell1/nco/ops/com/gfs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j]).zfill(3),'name')
+        grbind = pygrib.index('/home/gefs/gefs/model_data/gefs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j]).zfill(3),'name')
         precip=grbind.select(name='Total Precipitation')[0].values*.03937
         catsnow=grbind.select(name='Categorical snow')[0].values
         precip=np.asarray(precip[::-1,:])
         catsnow=np.asarray(catsnow[::-1,:])
 
       else:
-        grbindprev = pygrib.index('/gpfs/dell1/nco/ops/com/gfs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j-1]).zfill(3),'name')
-        grbind = pygrib.index('/gpfs/dell1/nco/ops/com/gfs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j]).zfill(3),'name')
+        # grbindprev = pygrib.index('/gpfs/dell1/nco/ops/com/gfs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j-1]).zfill(3),'name')
+        # grbind = pygrib.index('/gpfs/dell1/nco/ops/com/gfs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j]).zfill(3),'name')
+        grbindprev = pygrib.index('/home/gefs/gefs/model_data/gefs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j-1]).zfill(3),'name')
+        grbind = pygrib.index('/home/gefs/gefs/model_data/gefs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j]).zfill(3),'name')
         precipnewc=grbind.select(name='Total Precipitation')[0].values*.03937
         precipnewp=grbindprev.select(name='Total Precipitation')[0].values*.03937
         catsnow=grbind.select(name='Categorical snow')[0].values

@@ -1,4 +1,4 @@
-#! /bin/ksh
+#! /bin/bash
 #
 #BSUB -J wafs.ftp
 #BSUB -oo /gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/gefsftp.out
@@ -12,7 +12,7 @@
 
 set -x
 
-cd /gpfs/dell1/stmp/Alicia.Bentley/gefs
+cd ~/gefs/gpfs/dell1/stmp/Alicia.Bentley/gefs
 
 cyc=`cut -c 9-10 holddate.txt`
 day=`cut -c 7-8 holddate.txt`
@@ -27,16 +27,22 @@ ls -l *csv
 
 pwd
 
-scp *pw*csv abentley@emcrzdm:/home/www/emc/htdocs/users/meg/plumes 
-scp *850*csv abentley@emcrzdm:/home/www/emc/htdocs/users/meg/plumes
-scp *cape*csv abentley@emcrzdm:/home/www/emc/htdocs/users/meg/plumes
-scp *10m*csv abentley@emcrzdm:/home/www/emc/htdocs/users/meg/plumes
-scp *typ*csv abentley@emcrzdm:/home/www/emc/htdocs/users/meg/plumes 
-scp *snow*csv abentley@emcrzdm:/home/www/emc/htdocs/users/meg/plumes 
+#scp *pw*csv abentley@emcrzdm:/home/www/emc/htdocs/users/meg/plumes
+#scp *850*csv abentley@emcrzdm:/home/www/emc/htdocs/users/meg/plumes
+#scp *cape*csv abentley@emcrzdm:/home/www/emc/htdocs/users/meg/plumes
+#scp *10m*csv abentley@emcrzdm:/home/www/emc/htdocs/users/meg/plumes
+#scp *typ*csv abentley@emcrzdm:/home/www/emc/htdocs/users/meg/plumes
+#scp *snow*csv abentley@emcrzdm:/home/www/emc/htdocs/users/meg/plumes
+cp *pw*csv ~/gefs/gefs-plumes.webhop.me/
+cp *850*csv ~/gefs/gefs-plumes.webhop.me/
+cp *cape*csv ~/gefs/gefs-plumes.webhop.me/
+cp *10m*csv ~/gefs/gefs-plumes.webhop.me/
+cp *typ*csv ~/gefs/gefs-plumes.webhop.me/
+cp *snow*csv ~/gefs/gefs-plumes.webhop.me/
 
 if [[ $number -gt 3700 ]];then
-  scp EMC*html abentley@emcrzdm:/home/www/emc/htdocs/users/meg/plumes/index.html
+  #scp EMC*html abentley@emcrzdm:/home/www/emc/htdocs/users/meg/plumes/index.html
+  cp EMC*html ~/gefs/gefs-plumes.webhop.me/
 fi
 
 exit
-

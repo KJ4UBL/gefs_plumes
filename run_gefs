@@ -48,6 +48,8 @@ echo beforelsf
 ./poescript1
 echo pastlsf
 
-bsub < /gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/run_ftp_gefs1
-bsub < /gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/run_ftp_gefs
+#bsub < /gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/run_ftp_gefs1
+#bsub < /gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/run_ftp_gefs
+./run_ftp_gefs1
+./run_ftp_gefs
 exit
