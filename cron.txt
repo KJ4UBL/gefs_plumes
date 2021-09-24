@@ -61,6 +61,7 @@
 30 00 * * * cd /home/gefs/gefs/model_data/gefs/prod && wget -r --no-parent -nH --cut-dir=6 -N ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gens/prod/gefs.${date}/18/atmos/pgrb2ap5/*.f{123..192..3}* >> ~/gefs/logs/gefs.t18z.C.log 2>&1
 
 
+
 # Remove old GEFS/GFS runs to save disk space
 
 

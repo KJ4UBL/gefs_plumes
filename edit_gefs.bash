@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd ~/gefs/gpfs/dell1/stmp/Alicia.Bentley/gefs
+
 cyc=`cut -c 9-10 holddate.txt`
 day=`cut -c 11-13 holddate.txt`
 year=`cut -c 1-4 holddate.txt`
