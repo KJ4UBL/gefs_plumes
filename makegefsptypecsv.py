@@ -62,8 +62,8 @@ for i in range(len(members)):
       if j==0:
         # grbindprev = pygrib.index('/gpfs/dell4/nco/ops/com/gefs/prod/gefs.'+str(lastymd)+'/'+str(lasthour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(lasthour).zfill(2)+'z.pgrb2a.0p50.f003','name')
         # grbind = pygrib.index('/gpfs/dell4/nco/ops/com/gefs/prod/gefs.'+str(lastymd)+'/'+str(lasthour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(lasthour).zfill(2)+'z.pgrb2a.0p50.f006','name')
-        grbindprev = pygrib.index('/home/gefs/gefs/model_data/gefs/prod/gefs.'+str(lastymd)+'/'+str(lasthour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(lasthour).zfill(2)+'z.pgrb2a.0p50.f003','name')
-        grbind = pygrib.index('/home/gefs/gefs/model_data/gefs/prod/gefs.'+str(lastymd)+'/'+str(lasthour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(lasthour).zfill(2)+'z.pgrb2a.0p50.f006','name')
+        grbindprev = pygrib.index('/home/gefs/gefs/model_data/gefs/gefs.'+str(lastymd)+'/'+str(lasthour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(lasthour).zfill(2)+'z.pgrb2a.0p50.f003','name')
+        grbind = pygrib.index('/home/gefs/gefs/model_data/gefs/gefs.'+str(lastymd)+'/'+str(lasthour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(lasthour).zfill(2)+'z.pgrb2a.0p50.f006','name')
         precipnewc=grbind.select(name='Total Precipitation')[0].values*.03937
         precipnewp=grbindprev.select(name='Total Precipitation')[0].values*.03937
         catrain=grbind.select(name='Categorical rain')[0].values
@@ -80,10 +80,10 @@ for i in range(len(members)):
         precip=precipnewc-precipnewp
         
         # grbs = pygrib.open('/gpfs/dell4/nco/ops/com/gefs/prod/gefs.'+str(lastymd)+'/'+str(lasthour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(lasthour).zfill(2)+'z.pgrb2a.0p50.f003')
-        grbs = pygrib.open('/home/gefs/gefs/model_data/gefs/prod/gefs.'+str(lastymd)+'/'+str(lasthour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(lasthour).zfill(2)+'z.pgrb2a.0p50.f003')
+        grbs = pygrib.open('/home/gefs/gefs/model_data/gefs/gefs.'+str(lastymd)+'/'+str(lasthour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(lasthour).zfill(2)+'z.pgrb2a.0p50.f003')
       elif (j%2)!=0:
         # grbind = pygrib.index('/gpfs/dell4/nco/ops/com/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j]).zfill(3),'name')
-        grbind = pygrib.index('/home/gefs/gefs/model_data/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j]).zfill(3),'name')
+        grbind = pygrib.index('/home/gefs/gefs/model_data/gefs/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j]).zfill(3),'name')
         precip=grbind.select(name='Total Precipitation')[0].values*.03937
         catrain=grbind.select(name='Categorical rain')[0].values
         catsnow=grbind.select(name='Categorical snow')[0].values
@@ -97,8 +97,8 @@ for i in range(len(members)):
       else:
         # grbindprev = pygrib.index('/gpfs/dell4/nco/ops/com/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j-1]).zfill(3),'name')
         # grbind = pygrib.index('/gpfs/dell4/nco/ops/com/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j]).zfill(3),'name')
-        grbindprev = pygrib.index('/home/gefs/gefs/model_data/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j-1]).zfill(3),'name')
-        grbind = pygrib.index('/home/gefs/gefs/model_data/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j]).zfill(3),'name')
+        grbindprev = pygrib.index('/home/gefs/gefs/model_data/gefs/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j-1]).zfill(3),'name')
+        grbind = pygrib.index('/home/gefs/gefs/model_data/gefs/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j]).zfill(3),'name')
         precipnewc=grbind.select(name='Total Precipitation')[0].values*.03937
         precipnewp=grbindprev.select(name='Total Precipitation')[0].values*.03937
         catrain=grbind.select(name='Categorical rain')[0].values

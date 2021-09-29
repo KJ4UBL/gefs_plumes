@@ -58,8 +58,8 @@ for i in range(len(members)):
       if j==0:
         # grbs = pygrib.open('/gpfs/dell4/nco/ops/com/gefs/prod/gefs.'+str(lastymd)+'/'+str(lasthour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(lasthour).zfill(2)+'z.pgrb2a.0p50.f006')
         # grbsprev = pygrib.open('/gpfs/dell4/nco/ops/com/gefs/prod/gefs.'+str(lastymd)+'/'+str(lasthour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(lasthour).zfill(2)+'z.pgrb2a.0p50.f003')
-        grbs = pygrib.open('/home/gefs/gefs/model_data/gefs/prod/gefs.'+str(lastymd)+'/'+str(lasthour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(lasthour).zfill(2)+'z.pgrb2a.0p50.f006')
-        grbsprev = pygrib.open('/home/gefs/gefs/model_data/gefs/prod/gefs.'+str(lastymd)+'/'+str(lasthour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(lasthour).zfill(2)+'z.pgrb2a.0p50.f003')
+        grbs = pygrib.open('/home/gefs/gefs/model_data/gefs/gefs.'+str(lastymd)+'/'+str(lasthour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(lasthour).zfill(2)+'z.pgrb2a.0p50.f006')
+        grbsprev = pygrib.open('/home/gefs/gefs/model_data/gefs/gefs.'+str(lastymd)+'/'+str(lasthour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(lasthour).zfill(2)+'z.pgrb2a.0p50.f003')
         precipnewc=grbs[69].values*.03937
         precipnewc=np.asarray(precipnewc[::-1,:])
         precipnewp=grbsprev[69].values*.03937
@@ -67,14 +67,14 @@ for i in range(len(members)):
         precip=precipnewc-precipnewp
       elif (j%2)!=0:
         # grbs = pygrib.open('/gpfs/dell4/nco/ops/com/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j]).zfill(3))
-        grbs = pygrib.open('/home/gefs/gefs/model_data/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j]).zfill(3))
+        grbs = pygrib.open('/home/gefs/gefs/model_data/gefs/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j]).zfill(3))
         precip=grbs[69].values*.03937
         precip=np.asarray(precip[::-1,:])
       else:
         # grbsprev = pygrib.open('/gpfs/dell4/nco/ops/com/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j-1]).zfill(3))
         # grbs = pygrib.open('/gpfs/dell4/nco/ops/com/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j]).zfill(3))
-        grbsprev = pygrib.open('/home/gefs/gefs/model_data/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j-1]).zfill(3))
-        grbs = pygrib.open('/home/gefs/gefs/model_data/gefs/prod/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j]).zfill(3))
+        grbsprev = pygrib.open('/home/gefs/gefs/model_data/gefs/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j-1]).zfill(3))
+        grbs = pygrib.open('/home/gefs/gefs/model_data/gefs/gefs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/pgrb2ap5/ge'+members[i]+'.t'+str(hour).zfill(2)+'z.pgrb2a.0p50.f'+str(fhours1[j]).zfill(3))
         precipnewc=grbs[69].values*.03937
         precipnewc=np.asarray(precipnewc[::-1,:])
         precipnewp=grbsprev[69].values*.03937
@@ -91,12 +91,12 @@ for i in range(len(members)):
         nmbtotal[k,j,i]=np.absolute(znew)
     else:
       # grbs = pygrib.open('/gpfs/dell1/nco/ops/com/gfs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j]).zfill(3))
-      grbs = pygrib.open('/home/gefs/gefs/model_data/gfs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j]).zfill(3))
+      grbs = pygrib.open('/home/gefs/gefs/model_data/gfs/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j]).zfill(3))
       if j==0:
         # grbsprev = pygrib.open('/gpfs/dell1/nco/ops/com/gfs/prod/gfs.'+str(lastymd)+'/'+str(lasthour).zfill(2)+'/atmos/gfs.t'+str(lasthour).zfill(2)+'z.pgrb2.0p50.f003')
         # grbs = pygrib.open('/gpfs/dell1/nco/ops/com/gfs/prod/gfs.'+str(lastymd)+'/'+str(lasthour).zfill(2)+'/atmos/gfs.t'+str(lasthour).zfill(2)+'z.pgrb2.0p50.f006')
-        grbsprev = pygrib.open('/home/gefs/gefs/model_data/gfs/prod/gfs.'+str(lastymd)+'/'+str(lasthour).zfill(2)+'/atmos/gfs.t'+str(lasthour).zfill(2)+'z.pgrb2.0p50.f003')
-        grbs = pygrib.open('/home/gefs/gefs/model_data/gfs/prod/gfs.'+str(lastymd)+'/'+str(lasthour).zfill(2)+'/atmos/gfs.t'+str(lasthour).zfill(2)+'z.pgrb2.0p50.f006')
+        grbsprev = pygrib.open('/home/gefs/gefs/model_data/gfs/gfs.'+str(lastymd)+'/'+str(lasthour).zfill(2)+'/atmos/gfs.t'+str(lasthour).zfill(2)+'z.pgrb2.0p50.f003')
+        grbs = pygrib.open('/home/gefs/gefs/model_data/gfs/gfs.'+str(lastymd)+'/'+str(lasthour).zfill(2)+'/atmos/gfs.t'+str(lasthour).zfill(2)+'z.pgrb2.0p50.f006')
         precipnewc=grbs[596].values*.03937
         precipnewc=np.asarray(precipnewc[::-1,:])
         precipnewp=grbsprev[596].values*.03937
@@ -107,7 +107,7 @@ for i in range(len(members)):
         precip=np.asarray(precip[::-1,:])
       else:
         # grbsprev = pygrib.open('/gpfs/dell1/nco/ops/com/gfs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j-1]).zfill(3))
-        grbsprev = pygrib.open('/home/gefs/gefs/model_data/gfs/prod/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j-1]).zfill(3))
+        grbsprev = pygrib.open('/home/gefs/gefs/model_data/gfs/gfs.'+str(ymd)+'/'+str(hour).zfill(2)+'/atmos/gfs.t'+str(hour).zfill(2)+'z.pgrb2.0p50.f'+str(fhours1[j-1]).zfill(3))
         precipnewc=grbs[596].values*.03937
         precipnewc=np.asarray(precipnewc[::-1,:])
         precipnewp=grbsprev[596].values*.03937
