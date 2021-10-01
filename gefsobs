@@ -60,7 +60,7 @@ for s in $stations; do
 for h in $hours; do
 ~/gefs/code/advtime $ymdh 0 -1 1 0 > currentday.txt
 ymdcurrent=`cut -c 1-8 currentday.txt`
-fmdl1=~/gpfs/dell1/nco/ops/dcom/prod/ldmdata/gempak/hrly/${ymd}.hrly
+fmdl1=~/gefs/gpfs/dell1/nco/ops/dcom/prod/ldmdata/gempak/hrly/${ymd}.hrly
 ((k=k+1))
 
     /usr/local/bin/GEMPAK7/os/linux64/bin/sflist << EOF
