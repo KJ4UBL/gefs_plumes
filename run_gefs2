@@ -1,16 +1,4 @@
 #!/bin/bash
-#
-#BSUB -oo /gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/gefs2.out
-#BSUB -eo /gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/gefs2.out
-#BSUB -J gefs_2
-#BSUB -n 4
-#BSUB -R span[ptile=1]
-#BSUB -W 01:00
-#BSUB -P GEN-T2O
-#BSUB -R "affinity[core(4):distribute=balance]"
-#BSUB -q "dev"
-#BSUB -x
-#
 
 set +x
 source ~/.bashrc
@@ -40,11 +28,8 @@ echo "~/gefs/code/launchgefs2 ${cyc}" >> poescript2
 chmod 775 poescript2
 export MP_PGMMODEL=mpmd
 export MP_CMDFILE=poescript2
-#
-# Execute the script.
 
 echo beforelsf
-#mpirun -l cfp poescript2
 ./poescript2
 echo pastlsf
 
