@@ -22,41 +22,76 @@
 # 
 # m h  dom mon dow   command
 
+SHELL=/bin/bash
 
 # Fetch GEFS and GFS data - multiple jobs per run to try and have parallel downloads
 # GFS
-00 05 * * * UTCDATE=$(date +%Y%m%d) && cd ~/gefs/model_data/gfs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2.0p50.f[000-060]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.$UTCDATE/00/atmos/ >> ~/gefs/logs/gfs.t00z.A.log 2>&1
-00 05 * * * UTCDATE=$(date +%Y%m%d) && cd ~/gefs/model_data/gfs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2.0p50.f[063-120]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.$UTCDATE/00/atmos/ >> ~/gefs/logs/gfs.t00z.B.log 2>&1
-00 05 * * * UTCDATE=$(date +%Y%m%d) && cd ~/gefs/model_data/gfs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2.0p50.f[123-192]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.$UTCDATE/00/atmos/ >> ~/gefs/logs/gfs.t00z.C.log 2>&1
 
-00 11 * * * UTCDATE=$(date +%Y%m%d) && cd ~/gefs/model_data/gfs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2.0p50.f[000-060]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.$UTCDATE/06/atmos/ >> ~/gefs/logs/gfs.t06z.A.log 2>&1
-00 11 * * * UTCDATE=$(date +%Y%m%d) && cd ~/gefs/model_data/gfs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2.0p50.f[063-120]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.$UTCDATE/06/atmos/ >> ~/gefs/logs/gfs.t06z.B.log 2>&1
-00 11 * * * UTCDATE=$(date +%Y%m%d) && cd ~/gefs/model_data/gfs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2.0p50.f[123-192]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.$UTCDATE/06/atmos/ >> ~/gefs/logs/gfs.t06z.C.log 2>&1
+#00 05 * * * UTCDATE=$(date +\%Y\%m\%d) && cd ~/gefs/model_data/gfs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2.0p50.f[000-051]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.$UTCDATE/00/atmos/ >> ~/gefs/logs/gfs.t00z.A.log 2>&1
 
-00 17 * * * UTCDATE=$(date +%Y%m%d) && cd ~/gefs/model_data/gfs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2.0p50.f[000-060]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.$UTCDATE/12/atmos/ >> ~/gefs/logs/gfs.t12z.A.log 2>&1
-00 17 * * * UTCDATE=$(date +%Y%m%d) && cd ~/gefs/model_data/gfs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2.0p50.f[063-120]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.$UTCDATE/12/atmos/ >> ~/gefs/logs/gfs.t12z.B.log 2>&1
-00 17 * * * UTCDATE=$(date +%Y%m%d) && cd ~/gefs/model_data/gfs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2.0p50.f[123-192]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.$UTCDATE/12/atmos/ >> ~/gefs/logs/gfs.t12z.C.log 2>&1
+#00 05 * * * UTCDATE=$(date +\%Y\%m\%d) && cd ~/gefs/model_data/gfs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2.0p50.f[054-099]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.$UTCDATE/00/atmos/ >> ~/gefs/logs/gfs.t00z.B.log 2>&1
 
-00 23 * * * UTCDATE=$(date +%Y%m%d) && cd ~/gefs/model_data/gfs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2.0p50.f[000-060]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.$UTCDATE/18/atmos/ >> ~/gefs/logs/gfs.t18z.A.log 2>&1
-00 23 * * * UTCDATE=$(date +%Y%m%d) && cd ~/gefs/model_data/gfs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2.0p50.f[063-120]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.$UTCDATE/18/atmos/ >> ~/gefs/logs/gfs.t18z.B.log 2>&1
-00 23 * * * UTCDATE=$(date +%Y%m%d) && cd ~/gefs/model_data/gfs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2.0p50.f[123-192]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.$UTCDATE/18/atmos/ >> ~/gefs/logs/gfs.t18z.C.log 2>&1
+#00 05 * * * UTCDATE=$(date +\%Y\%m\%d) && cd ~/gefs/model_data/gfs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2.0p50.f[102-192]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.$UTCDATE/00/atmos/ >> ~/gefs/logs/gfs.t00z.C.log 2>&1
+
+#Debug testing
+35 05 * * * UTCDATE=$(date +\%Y\%m\%d) && cd ~/gefs/model_data/gfs && curl -O ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.$UTCDATE/00/atmos/gfs.t00z.pgrb2.0p50.f[000-051:3] >> ~/gefs/logs/gfs.t00z.dev.log 2>&1
+
+#New version with cURL
+35 05 * * * UTCDATE=$(date +\%Y\%m\%d) && mkdir -p ~/gefs/model_data/gfs/gfs.$UTCDATE/00/atmos/ && cd ~/gefs/model_data/gfs/gfs.$UTCDATE/00/atmos && curl -O ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.$UTCDATE/00/atmos/gfs.t00z.pgrb2.0p50.f[000-051:3] >> ~/gefs/logs/gfs.t00z.A.log 2>&1
+
+
+00 11 * * * UTCDATE=$(date +\%Y\%m\%d) && cd ~/gefs/model_data/gfs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2.0p50.f[000-051]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.$UTCDATE/06/atmos/ >> ~/gefs/logs/gfs.t06z.A.log 2>&1
+
+00 11 * * * UTCDATE=$(date +\%Y\%m\%d) && cd ~/gefs/model_data/gfs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2.0p50.f[054-099]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.$UTCDATE/06/atmos/ >> ~/gefs/logs/gfs.t06z.B.log 2>&1
+
+00 11 * * * UTCDATE=$(date +\%Y\%m\%d) && cd ~/gefs/model_data/gfs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2.0p50.f[102-192]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.$UTCDATE/06/atmos/ >> ~/gefs/logs/gfs.t06z.C.log 2>&1
+
+
+00 17 * * * UTCDATE=$(date +\%Y\%m\%d) && cd ~/gefs/model_data/gfs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2.0p50.f[000-051]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.$UTCDATE/12/atmos/ >> ~/gefs/logs/gfs.t12z.A.log 2>&1
+
+00 17 * * * UTCDATE=$(date +\%Y\%m\%d) && cd ~/gefs/model_data/gfs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2.0p50.f[054-099]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.$UTCDATE/12/atmos/ >> ~/gefs/logs/gfs.t12z.B.log 2>&1
+
+00 17 * * * UTCDATE=$(date +\%Y\%m\%d) && cd ~/gefs/model_data/gfs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2.0p50.f[102-192]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.$UTCDATE/12/atmos/ >> ~/gefs/logs/gfs.t12z.C.log 2>&1
+
+
+00 23 * * * UTCDATE=$(date +\%Y\%m\%d) && cd ~/gefs/model_data/gfs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2.0p50.f[000-051]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.$UTCDATE/18/atmos/ >> ~/gefs/logs/gfs.t18z.A.log 2>&1
+
+00 23 * * * UTCDATE=$(date +\%Y\%m\%d) && cd ~/gefs/model_data/gfs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2.0p50.f[054-099]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.$UTCDATE/18/atmos/ >> ~/gefs/logs/gfs.t18z.B.log 2>&1
+
+00 23 * * * UTCDATE=$(date +\%Y\%m\%d) && cd ~/gefs/model_data/gfs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2.0p50.f[102-192]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.$UTCDATE/18/atmos/ >> ~/gefs/logs/gfs.t18z.C.log 2>&1
+
+
+
 
 #GEFS
-30 06 * * * UTCDATE=$(date +%Y%m%d) && cd ~/gefs/model_data/gefs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2a.0p50.f[000-060]* ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gens/prod/gefs.$UTCDATE/00/atmos/pgrb2ap5/ >> ~/gefs/logs/gefs.t00z.A.log 2>&1
-30 06 * * * UTCDATE=$(date +%Y%m%d) && cd ~/gefs/model_data/gefs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2a.0p50.f[063-120]* ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gens/prod/gefs.$UTCDATE/00/atmos/pgrb2ap5/ >> ~/gefs/logs/gefs.t00z.B.log 2>&1
-30 06 * * * UTCDATE=$(date +%Y%m%d) && cd ~/gefs/model_data/gefs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2a.0p50.f[123-192]* ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gens/prod/gefs.$UTCDATE/00/atmos/pgrb2ap5/ >> ~/gefs/logs/gefs.t00z.C.log 2>&1
 
-15 12 * * * UTCDATE=$(date +%Y%m%d) && cd ~/gefs/model_data/gefs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2a.0p50.f[000-060]* ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gens/prod/gefs.$UTCDATE/06/atmos/pgrb2ap5/ >> ~/gefs/logs/gefs.t06z.A.log 2>&1
-15 12 * * * UTCDATE=$(date +%Y%m%d) && cd ~/gefs/model_data/gefs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2a.0p50.f[063-120]* ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gens/prod/gefs.$UTCDATE/06/atmos/pgrb2ap5/ >> ~/gefs/logs/gefs.t06z.B.log 2>&1
-15 12 * * * UTCDATE=$(date +%Y%m%d) && cd ~/gefs/model_data/gefs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2a.0p50.f[123-192]* ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gens/prod/gefs.$UTCDATE/06/atmos/pgrb2ap5/ >> ~/gefs/logs/gefs.t06z.C.log 2>&1
+30 06 * * * UTCDATE=$(date +\%Y\%m\%d) && cd ~/gefs/model_data/gefs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2a.0p50.f[000-051]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gens/prod/gefs.$UTCDATE/00/atmos/pgrb2ap5/ >> ~/gefs/logs/gefs.t00z.A.log 2>&1
 
-30 18 * * * UTCDATE=$(date +%Y%m%d) && cd ~/gefs/model_data/gefs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2a.0p50.f[000-060]* ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gens/prod/gefs.$UTCDATE/12/atmos/pgrb2ap5/ >> ~/gefs/logs/gefs.t12z.A.log 2>&1
-30 18 * * * UTCDATE=$(date +%Y%m%d) && cd ~/gefs/model_data/gefs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2a.0p50.f[063-120]* ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gens/prod/gefs.$UTCDATE/12/atmos/pgrb2ap5/ >> ~/gefs/logs/gefs.t12z.B.log 2>&1
-30 18 * * * UTCDATE=$(date +%Y%m%d) && cd ~/gefs/model_data/gefs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2a.0p50.f[123-192]* ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gens/prod/gefs.$UTCDATE/12/atmos/pgrb2ap5/ >> ~/gefs/logs/gefs.t12z.C.log 2>&1
+30 06 * * * UTCDATE=$(date +\%Y\%m\%d) && cd ~/gefs/model_data/gefs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2a.0p50.f[054-099]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gens/prod/gefs.$UTCDATE/00/atmos/pgrb2ap5/ >> ~/gefs/logs/gefs.t00z.B.log 2>&1
 
-30 00 * * * UTCDATE=$(date +%Y%m%d) && cd ~/gefs/model_data/gefs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2a.0p50.f[000-060]* ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gens/prod/gefs.$UTCDATE/18/atmos/pgrb2ap5/ >> ~/gefs/logs/gefs.t18z.A.log 2>&1
-30 00 * * * UTCDATE=$(date +%Y%m%d) && cd ~/gefs/model_data/gefs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2a.0p50.f[063-120]* ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gens/prod/gefs.$UTCDATE/18/atmos/pgrb2ap5/ >> ~/gefs/logs/gefs.t18z.B.log 2>&1
-30 00 * * * UTCDATE=$(date +%Y%m%d) && cd ~/gefs/model_data/gefs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2a.0p50.f[123-192]* ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gens/prod/gefs.$UTCDATE/18/atmos/pgrb2ap5/ >> ~/gefs/logs/gefs.t18z.C.log 2>&1
+30 06 * * * UTCDATE=$(date +\%Y\%m\%d) && cd ~/gefs/model_data/gefs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2a.0p50.f[102-192]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gens/prod/gefs.$UTCDATE/00/atmos/pgrb2ap5/ >> ~/gefs/logs/gefs.t00z.C.log 2>&1
+
+
+15 12 * * * UTCDATE=$(date +\%Y\%m\%d) && cd ~/gefs/model_data/gefs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2a.0p50.f[000-051]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gens/prod/gefs.$UTCDATE/06/atmos/pgrb2ap5/ >> ~/gefs/logs/gefs.t06z.A.log 2>&1
+
+15 12 * * * UTCDATE=$(date +\%Y\%m\%d) && cd ~/gefs/model_data/gefs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2a.0p50.f[054-099]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gens/prod/gefs.$UTCDATE/06/atmos/pgrb2ap5/ >> ~/gefs/logs/gefs.t06z.B.log 2>&1
+
+15 12 * * * UTCDATE=$(date +\%Y\%m\%d) && cd ~/gefs/model_data/gefs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2a.0p50.f[102-192]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gens/prod/gefs.$UTCDATE/06/atmos/pgrb2ap5/ >> ~/gefs/logs/gefs.t06z.C.log 2>&1
+
+
+30 18 * * * UTCDATE=$(date +\%Y\%m\%d) && cd ~/gefs/model_data/gefs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2a.0p50.f[000-051]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gens/prod/gefs.$UTCDATE/12/atmos/pgrb2ap5/ >> ~/gefs/logs/gefs.t12z.A.log 2>&1
+
+30 18 * * * UTCDATE=$(date +\%Y\%m\%d) && cd ~/gefs/model_data/gefs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2a.0p50.f[054-099]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gens/prod/gefs.$UTCDATE/12/atmos/pgrb2ap5/ >> ~/gefs/logs/gefs.t12z.B.log 2>&1
+
+30 18 * * * UTCDATE=$(date +\%Y\%m\%d) && cd ~/gefs/model_data/gefs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2a.0p50.f[102-192]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gens/prod/gefs.$UTCDATE/12/atmos/pgrb2ap5/ >> ~/gefs/logs/gefs.t12z.C.log 2>&1
+
+
+30 00 * * * UTCDATE=$(date +\%Y\%m\%d) && cd ~/gefs/model_data/gefs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2a.0p50.f[000-051]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gens/prod/gefs.$UTCDATE/18/atmos/pgrb2ap5/ >> ~/gefs/logs/gefs.t18z.A.log 2>&1
+
+30 00 * * * UTCDATE=$(date +\%Y\%m\%d) && cd ~/gefs/model_data/gefs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2a.0p50.f[054-099]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gens/prod/gefs.$UTCDATE/18/atmos/pgrb2ap5/ >> ~/gefs/logs/gefs.t18z.B.log 2>&1
+
+30 00 * * * UTCDATE=$(date +\%Y\%m\%d) && cd ~/gefs/model_data/gefs && wget -r --no-parent -nH -N --cut-dir=6 -A "*pgrb2a.0p50.f[102-192]*" ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gens/prod/gefs.$UTCDATE/18/atmos/pgrb2ap5/ >> ~/gefs/logs/gefs.t18z.C.log 2>&1
+
 
 
 
