@@ -63,10 +63,10 @@ ymdcurrent=`cut -c 1-8 currentday.txt`
 fmdl1=~/gpfs/dell1/nco/ops/dcom/prod/ldmdata/gempak/hrly/${ymd}.hrly
 ((k=k+1))
 
-    sflist << EOF
+    /usr/local/bin/GEMPAK7/os/linux64/bin/sflist << EOF
 SFFILE = $fmdl1
 AREA   = @${s}
-DATTIM = `/gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/advtime $ymdh 0 -1 0`-`/gpfs/dell2/emc/verification/save/Alicia.Bentley/gefs/advtime $ymdh $h -1 0`
+DATTIM ~/gefs/code/advtime $ymdh 0 -1 0`-`~/gefs/code/advtime $ymdh $h -1 0`
 SFPARM = tmpc;dwpc;sknt;drct;tclo;pmsl;P01I
 OUTPUT = f/pancobs${h}.txt
 IDNTYP = STID
@@ -77,7 +77,7 @@ r
 ex
 EOF
 
-gpend
+/usr/local/bin/GEMPAK7/os/linux64/bin/gpend
 
 cat pancobs${h}.txt >> pancobs.txt
 
